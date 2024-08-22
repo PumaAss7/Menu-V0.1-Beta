@@ -1,1 +1,27 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/PumaAss7/Menu-V1-Beta/main/script'))()
 
+local Window = Rayfield:CreateWindow({
+    Name = "Ass7 Menu",
+    LoadingTitle = "Menu",
+    LoadingSubtitle = "By: Ass7",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, 
+       FileName = "Menu Ass7"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "noinvitelink", 
+       RememberJoins = true 
+    },
+    KeySystem = false, 
+    KeySettings = {
+       Title = "Untitled",
+       Subtitle = "Key System",
+       Note = "No method of obtaining the key is provided",
+       FileName = "Key",  
+       SaveKey = true,
+       GrabKeyFromSite = false, 
+       Key = {"Hello"} 
+    }
+ })
