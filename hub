@@ -1,0 +1,219 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/PumaAss7/Menu-V0.1-Beta/main/script'))()
+
+local Window = Rayfield:CreateWindow({
+    Nome = "Ass7 - Menu Beta",
+    TituloCarregando = "Ass7",
+    SubtituloCarregando = "por Ass7",
+    SalvamentoConfiguracao = {
+       Habilitado = true,
+       NomePasta = nil, -- Crie uma pasta personalizada para o seu hub/jogo
+       NomeArquivo = "StratWare"
+    },
+    Discord = {
+       Habilitado = false,
+       Convite = "noinvitelink", -- O código de convite do Discord, não inclua discord.gg/. Ex.: discord.gg/ABCD seria ABCD
+       LembrarConvites = true -- Defina isso como false para fazer com que eles entrem no Discord toda vez que carregarem
+    },
+    SistemaChave = false, -- Defina isso como true para usar nosso sistema de chaves
+    ConfiguracoesChave = {
+       Titulo = "Sem Título",
+       Subtitulo = "Sistema de Chaves",
+       Nota = "Nenhum método de obtenção da chave é fornecido",
+       NomeArquivo = "Chave", -- É recomendado usar algo único, pois outros scripts usando Rayfield podem sobrescrever seu arquivo de chave
+       SalvarChave = true, -- A chave do usuário será salva, mas se você mudar a chave, eles não poderão usar seu script
+       ObterChaveDoSite = false, -- Se isso for true, defina Chave abaixo para o site RAW de onde você gostaria que Rayfield obtivesse a chave
+       Chave = {"Hello"} -- Lista de chaves que serão aceitas pelo sistema, podem ser links de arquivos RAW (pastebin, github etc) ou strings simples ("hello","key22")
+    }
+ })
+
+
+
+ -- Aimbot
+
+ local AimbotTab = Window:CreateTab("Aimbot", 4483362458) -- Título, Imagem
+
+ local Toggle = AimbotTab:CreateToggle({
+    Nome = "Ligar",
+    ValorAtual = false,
+    Flag = "Toggle1", -- Uma flag é o identificador para o arquivo de configuração, certifique-se de que cada elemento tenha uma flag diferente se você estiver usando salvamento de configuração para garantir que não haja sobreposições
+    Callback = function(Valor)
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/PumaAss7/Menu-V0.1-Beta/main/script"))()
+    end,
+ })
+
+  -- Visuais
+
+  local VisualsTab = Window:CreateTab("Visuais", 4483362458) -- Título, Imagem
+
+  local Botao = VisualsTab:CreateButton({
+   Nome = "ESP",
+   Callback = function()
+local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/PumaAss7/Menu-V0.1-Beta/main/script"))();
+
+--// Interruptor principal
+ESP.Habilitado = true;
+
+--// Habilitar caixas
+ESP.MostrarCaixa = false;
+
+--// Definir o tipo de caixa como canto
+ESP.TipoCaixa = "false";
+
+--// Habilitar Ligar
+ESP.MostrarNome = true;
+
+--// Habilitar barra de saúde
+ESP.MostrarSaude = false;
+
+--// Habilitar rastreadores
+ESP.MostrarRastreador = false;
+
+--// Habilitar distância
+ESP.MostrarDistancia = false;
+
+--[[
+    Habilitar esqueletos: (atualmente quebrado)
+    ESP.MostrarEsqueletos = true;
+]]
+
+
+
+--[[
+    Estas são todas as configurações
+    local CONFIGURACOES_ESP = {
+        CorContornoCaixa = Color3.new(0, 0, 0),
+        CorCaixa = Color3.new(1, 1, 1),
+        CorNome = Color3.new(1, 1, 1),
+        CorContornoSaude = Color3.new(0, 0, 0),
+        CorSaudeAlta = Color3.new(0, 1, 0),
+        CorSaudeBaixa = Color3.new(1, 0, 0),
+        TamanhoChar = Vector2.new(4, 6),
+        VerificacaoEquipe = false,
+        VerificacaoParede = false,
+        Habilitado = false,
+        MostrarCaixa = false,
+        TipoCaixa = "2D",
+        MostrarNome = false,
+        MostrarSaude = false,
+        MostrarDistancia = false,
+        MostrarEsqueletos = false,
+        MostrarRastreador = false,
+        CorRastreador = Color3.new(1, 1, 1), 
+        EspessuraRastreador = 2,
+        CorEsqueletos = Color3.new(1, 1, 1),
+        PosicaoRastreador = "Inferior",
+    }
+]]
+
+   end,
+})
+local Botao = VisualsTab:CreateButton({
+   Nome = "Rastreadores",
+   Callback = function()
+   local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/StratWare/main/ESP.lua"))();
+
+--// Interruptor principal
+ESP.Habilitado = true;
+
+--// Habilitar caixas
+ESP.MostrarCaixa = true;
+
+--// Definir o tipo de caixa como canto
+ESP.TipoCaixa = "Caixa de Canto";
+
+--// Habilitar nomes
+ESP.MostrarNome = true;
+
+--// Habilitar barra de saúde
+ESP.MostrarSaude = true;
+
+--// Habilitar rastreadores
+ESP.MostrarRastreador = true;
+
+--// Habilitar distância
+ESP.MostrarDistancia = true;
+   end,
+})
+--[[
+    Habilitar esqueletos: (atualmente quebrado)
+    ESP.MostrarEsqueletos = true;
+]]
+
+
+
+--[[
+    Estas são todas as configurações
+    local CONFIGURACOES_ESP = {
+        CorContornoCaixa = Color3.new(0, 0, 0),
+        CorCaixa = Color3.new(1, 1, 1),
+        CorNome = Color3.new(1, 1, 1),
+        CorContornoSaude = Color3.new(0, 0, 0),
+        CorSaudeAlta = Color3.new(0, 1, 0),
+        CorSaudeBaixa = Color3.new(1, 0, 0),
+        TamanhoChar = Vector2.new(4, 6),
+        VerificacaoEquipe = false,
+        VerificacaoParede = false,
+        Habilitado = false,
+        MostrarCaixa = false,
+        TipoCaixa = "2D",
+        MostrarNome = false,
+        MostrarSaude = false,
+        MostrarDistancia = false,
+        MostrarEsqueletos = false,
+        MostrarRastreador = false,
+        CorRastreador = Color3.new(1, 1, 1), 
+        EspessuraRastreador = 2,
+        CorEsqueletos = Color3.new(1, 1, 1),
+        PosicaoRastreador = "Inferior",
+    }
+]]
+
+end,
+})
+local Botao = VisualsTab:CreateButton({
+   Nome = "Rastreadores",
+   Callback = function()
+   local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/StratWare/main/ESP.lua"))();
+
+--// Interruptor principal
+ESP.Habilitado = true;
+
+--// Habilitar caixas
+ESP.MostrarCaixa = true;
+
+--// Definir o tipo de caixa como canto
+ESP.TipoCaixa = "Caixa de Canto";
+
+--// Habilitar nomes
+ESP.MostrarNome = true;
+
+--// Habilitar barra de saúde
+ESP.MostrarSaude = true;
+
+--// Habilitar rastreadores
+ESP.MostrarRastreador = true;
+
+--// Habilitar distância
+ESP.MostrarDistancia = true;
+   end,
+})
+            
+ local SeletorCor = VisualsTab:CreateColorPicker({
+    Nome = "Cor do ESP",
+    Cor = Color3.fromRGB(255,255,255),
+    Flag = "SeletorCor1", -- Uma flag é o identificador para o arquivo de configuração, certifique-se de que cada elemento tenha uma flag diferente se você estiver usando salvamento de configuração para garantir que não haja sobreposições
+    Callback = function(Valor)
+        -- A função que ocorre toda vez que o seletor de cor é movido/alterado
+        -- A variável (Valor) é um valor Color3fromRGB baseado na cor selecionada
+    end,
+})
+
+local Aim2Tab = Window:CreateTab("use this if u dont like my code :(", 4483362458) -- Título, Imagem
+
+local Botao = Aim2Tab:CreateButton({
+   Nome = "Isso abrirá uma nova interface",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ttwizz/Open-Aimbot/master/source.lua", true))()
+            -- acho que tenho que colocar isso aqui por direitos autorais ou algo assim
+            --[[
+            Licença MIT
