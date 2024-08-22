@@ -1,0 +1,116 @@
+-- Créditos: Ass7, https://discord.gg/aw9WC3VD5p
+-- Abaixo estará nossa UI Library
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7yhx/kwargs_Ui_Library/main/source.lua"))()
+
+local UI = Lib:Create{
+   Theme = "Dark", -- or any other theme
+   Size = UDim2.new(0, 555, 0, 400) -- default
+}
+
+local Main = UI:Tab{
+   Name = "Inicio"
+}
+
+local Divider = Main:Divider{
+   Name = "Inicio Shit"
+}
+
+local QuitDivider = Main:Divider{
+   Name = "Sair"
+}
+
+-- Script de ESP Ass7
+-- Configurações
+local teleportLocation = Vector3.new(0, 10, 0) -- Substitua com as coordenadas desejadas
+local flySpeed = 50
+local explosionRadius = 10
+local explosionDamage = 100
+local scriptActive = true -- Variável para ativar/desativar o script
+
+-- Comandos
+local teleportCommand = "!teleportall"
+local flyCommand = "!flyall"
+local explodeCommand = "!explodeall"
+local toggleScriptCommand = "!togglescript"
+
+-- Função para teletransportar todos os jogadores
+local function teleportAllPlayers()
+    for _, player in pairs(game.Players:GetPlayers()) do
+        local character = player.Character
+        if character then
+            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+            if humanoidRootPart then
+                humanoidRootPart.CFrame = CFrame.new(teleportLocation)
+            end
+        end
+    end
+end
+
+-- Função para ativar/desativar o voo para todos os jogadores
+local function toggleFlight(enable)
+    for _, player in pairs(game.Players:GetPlayers()) do
+        local character = player.Character
+        if character then
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                if enable then
+                    humanoid.PlatformStand = true -- Desabilita a física do jogador
+                else
+                    humanoid.PlatformStand = false -- Reabilita a física do jogador
+                end
+            end
+        end
+    end
+end
+
+-- Função para criar uma explosão
+local function createExplosion(position)
+    local explosion = Instance.new("Explosion")
+    explosion.Position = position
+    explosion.BlastRadius = explosionRadius
+    explosion.BlastPressure = 5000
+    explosion.Parent = workspace
+
+    for _, player in pairs(game.Players:GetPlayers()) do
+        local character = player.Character
+        if character then
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:TakeDamage(explosionDamage)
+            end
+        end
+    end
+end
+
+-- Função para ativar ou desativar o script
+local function toggleScript()
+    scriptActive = not scriptActive
+    print("Script ativado:", scriptActive)
+end
+
+-- Evento de comando de chat
+game.Players.PlayerAdded:Connect(function(player)
+    player.Chatted:Connect(function(message)
+        if not scriptActive then return end
+
+        message = message:lower()
+        if message == teleportCommand then
+            teleportAllPlayers()
+        elseif message == flyCommand then
+            local enableFlight = not game.Players:GetPlayers()[1].Character:FindFirstChildOfClass("Humanoid").PlatformStand
+            toggleFlight(enableFlight)
+        elseif message == explodeCommand then
+            for _, player in pairs(game.Players:GetPlayers()) do
+                local character = player.Character
+                if character then
+                    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+                    if humanoidRootPart then
+                        createExplosion(humanoidRootPart.Position)
+                    end
+                end
+            end
+        elseif message == toggleScriptCommand then
+            toggleScript()
+        end
+    end)
+end)
